@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: SMS
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/SMS
+    username: root
+    password: rootroot
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  #
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
+        globally_quoted_identifiers: true
+
+server:
+  port: 9090
+
+logging:
+  level:
+    root: INFO
+    com.ytseries.sms: DEBUG
+    org.hibernate.SQL: INFO
+    org.springframework: INFO
+
+
