@@ -12,9 +12,9 @@ This repository is the official code companion for our YouTube playlist. We move
 
 * **Language:** Java 21 (LTS)
 * **Framework:** Spring Boot 3.x
-* **Database:** PostgreSQL / MySQL (Hibernate JPA)
+* **Database:** MySQL (Hibernate JPA)
 * **Security:** Spring Security & JWT
-* **Documentation:** Swagger UI / Open API
+* **Documentation:** Swagger UI
 * **Build Tool:** Maven
 
 ---
@@ -97,6 +97,10 @@ Once the application is running, you can explore the API endpoints via Swagger U
 
 * [x] Basic CRUD for Students
 * [x] Department & Instructor logic
+* [x] Custom Execption & global Exception
+* [x] @Valid Request validation
+* [x] Custom @annotaion (create own annotation)
+* [x] AOP logging
 * [ ] JWT Authentication & Authorization
 * [ ] Student Performance Analytics (In progress...)
 * [ ] Email Notifications (Upcoming...)
