@@ -2,6 +2,7 @@ package com.ytseries.sms.dto;
 
 import com.ytseries.sms.entity.Department;
 import com.ytseries.sms.entity.Instructor;
+import jakarta.validation.constraints.*;
 import lombok.Data;
 
 import java.util.List;
@@ -10,8 +11,13 @@ import java.util.stream.Collectors;
 @Data
 public class DepartmentDTO {
     private String departmentId;
+
+    @NotBlank(message = "Department Name is Required")
+    @Size(min = 3, message = "At least 3 char department name is required")
     private String departmentName;
+
     private String hodId;
+
     private List<String> instructorIds;
 
     public Department toEntity(Instructor hod, List<Instructor> instructors) {

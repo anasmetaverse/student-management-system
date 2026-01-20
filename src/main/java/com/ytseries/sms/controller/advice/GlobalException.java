@@ -2,6 +2,7 @@ package com.ytseries.sms.controller.advice;
 
 import com.ytseries.sms.dto.ResponseModel;
 import com.ytseries.sms.exception.DuplicateExceptionResource;
+import com.ytseries.sms.exception.MaxLimitExceptionResource;
 import com.ytseries.sms.exception.NotFoundExceptionResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
@@ -28,6 +29,14 @@ public class GlobalException {
 
     @ExceptionHandler(NotFoundExceptionResource.class)
     public ResponseModel handelDuplicateExceptionResource (NotFoundExceptionResource ex) {
+        return ResponseModel.not_found(
+                ex.getMessage(),
+                null
+        );
+    }
+
+    @ExceptionHandler(MaxLimitExceptionResource.class)
+    public ResponseModel handelMaxLimitExceptionResource (MaxLimitExceptionResource ex) {
         return ResponseModel.not_found(
                 ex.getMessage(),
                 null

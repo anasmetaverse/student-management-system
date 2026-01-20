@@ -31,9 +31,13 @@ public class Course {
     @Enumerated(EnumType.STRING)
     private Category category;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "instructor_Id")
     private Instructor instructorId;
+
+    private int maxEnrollment; // 50
+
+    private int currentEnrollment; // 3
 
     @PrePersist
     public void prePersist() {

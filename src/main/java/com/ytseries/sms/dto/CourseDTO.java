@@ -4,6 +4,7 @@ import com.ytseries.sms.entity.Course;
 import com.ytseries.sms.entity.Instructor;
 import com.ytseries.sms.entity.enums.Category;
 import com.ytseries.sms.entity.enums.Status;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,12 +18,26 @@ import java.time.LocalDate;
 @Data
 public class CourseDTO {
     private String courseId;
+
+    @NotBlank(message = "Course Name is Required")
+    @Size(min = 3, message = "At least 3 char course name is required")
     private String courseName;
+
+    @NotBlank(message = "Course Description is Required")
+    @Size(min = 10, message = "Course description must be at least 10 characters")
     private String courseDescription;
+
+    @Min(value = 1, message = "Duration must be at least 1")
     private long duration;
+
     private Status status;
+
+    @NotNull(message = "Category is Required")
     private Category category;
+
     private LocalDate createdOn;
+
+    @NotBlank(message = "Instructor ID is Required")
     private String instructorId;
 
     public Course toEntity(Instructor instructor) {

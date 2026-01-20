@@ -8,6 +8,7 @@ import com.ytseries.sms.entity.enums.Status;
 import com.ytseries.sms.exception.DuplicateExceptionResource;
 import com.ytseries.sms.exception.NotFoundExceptionResource;
 import com.ytseries.sms.util.APIMessage;
+import com.ytseries.sms.util.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -55,15 +56,9 @@ public class StudentService {
                 .toList();
 
 
-        Map<String, Object> pageResult = new HashMap<>();
-        pageResult.put("pageSize", pageSize);
-        pageResult.put("pageNo", pageNo);
-        pageResult.put("totalRecords", students.getTotalElements());
-        pageResult.put("pageCount", students.getTotalPages());
-
         Map<String, Object> result = new HashMap<>();
         result.put("data", dtos);
-        result.put("pageResult", pageResult);
+        result.put("pageResult", Utils.preparePageResult(students));
 
         return ResponseModel.success(
                 APIMessage.STUDENT_FOUND,
